@@ -1,3 +1,4 @@
+
 import os
 from setuptools import setup, find_packages
 
@@ -27,7 +28,7 @@ setup(
     author="GreenPonik SAS",
     author_email="contact@greenponik.com",
     package_dir={"": "src"},
-    packages=find_packages(where="src"),
+    packages=find_packages(),
     python_requires=">=3.6",
     version=load_version(),
     long_description=long_description(),
