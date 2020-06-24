@@ -5,7 +5,7 @@ This is the sample code for read temperature with thermistor 10k sensor on i2c b
 
 ## Table of Contents
 
-- [## GreenPonik_thermistor_10k.py Library for Raspberry pi](#h2-id%22greenponikthermistor10kpy-library-for-raspberry-pi-4%22greenponikthermistor10kpy-library-for-raspberry-pih2)
+- [GreenPonik_thermistor_10k.py Library for Raspberry pi](#greenponikthermistor10kpy-library-for-raspberry-pi)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Methods](#methods)
