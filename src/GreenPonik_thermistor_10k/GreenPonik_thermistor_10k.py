@@ -67,4 +67,3 @@ class GreenPonik_thermistor_10k:
         except BaseException as e:
             print('cannot read water temperature')
             print('An exception occurred: {}'.format(e))
-            pass
