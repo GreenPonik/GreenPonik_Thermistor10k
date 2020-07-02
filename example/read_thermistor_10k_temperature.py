@@ -8,4 +8,3 @@ if __name__ == "__main__":
         temperature = GreenPonik_thermistor_10k.read_temp()
         print("celcius temp %.3f" % temperature)
         time.sleep(1)
-    pass
