@@ -27,6 +27,10 @@ This is the sample code for read temperature with thermistor 10k sensor on i2c b
 ## Installation
 ```shell
 > git clone https://github.com/GreenPonik/GreenPonik_thermistor_10k.git
+
+or 
+
+> pip install greenponik-thermistor-10k
 ```
 ```Python
 
