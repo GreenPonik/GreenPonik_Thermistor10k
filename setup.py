@@ -29,13 +29,14 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/GreenPonik/GreenPonik_thermistor_10k",
     license="MIT",
+    install_requires=["adafruit-circuitpython-ads1x15"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    packages=find_packages(where='src'),  # Required
-    package_dir={"": "src"},
+    packages=find_packages(where='src/GreenPonik_thermistor_10k'),  # Required
+    package_dir={"": "src/GreenPonik_thermistor_10k"},
     python_requires=">=3.6",
     project_urls={  # Optional
         'Source': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/',
