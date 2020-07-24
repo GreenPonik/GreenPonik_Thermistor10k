@@ -8,6 +8,10 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=security_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
 
+
+![Upload Python Package](https://github.com/GreenPonik/GreenPonik_thermistor_10k/workflows/Upload%20Python%20Package/badge.svg?event=release)
+
+
 ## GreenPonik_thermistor_10k.py Library for Raspberry pi
 ---------------------------------------------------------
 This is the sample code for read temperature with thermistor 10k sensor on i2c bus.
@@ -21,8 +25,7 @@ This is the sample code for read temperature with thermistor 10k sensor on i2c b
 - [Methods](#methods)
 - [Example](#example)
 - [Credits](#credits)
-<snippet>
-<content>
+
 
 ## Installation
 ```shell
