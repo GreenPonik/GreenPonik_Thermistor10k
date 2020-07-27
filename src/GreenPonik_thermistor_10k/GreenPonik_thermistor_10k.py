@@ -17,10 +17,10 @@ from adafruit_ads1x15.analog_in import AnalogIn
 import math
 
 
-"""
-Read thermistor 10k temperature on raspberry pi i2c bus
-"""
 def read_temp():
+    """
+    Read thermistor 10k temperature on raspberry pi i2c bus
+    """
     """
     Get temperatue in celcius
     """
