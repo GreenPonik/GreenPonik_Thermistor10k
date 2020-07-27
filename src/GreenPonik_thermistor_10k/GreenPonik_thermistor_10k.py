@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 
 """
 ####################################################################
@@ -51,15 +51,18 @@ def read_temp():
         # Using Ohm's Law to calculate resistance of thermistor
         resistance = voltage / ref_current
         print("resistance: %.3f" % resistance)
-        # Log of the ratio of thermistor resistance and resistance at 25 deg. C
+        # Log of the ratio of thermistor resistance
+        # and resistance at 25 deg. C
         ln = math.log(resistance / thermistor_25)
         print("ln: %.3f" % ln)
         # Using the Steinhart-Hart Thermistor Equation to calculate temp in K
-        kelvin = (1 / (0.0033540170 + (0.00025617244 * ln) +
-            (0.0000021400943 * ln**2) +
-            (-0.000000072405219 * ln**3))
+        kelvin = (
+            1 / (0.0033540170 + (0.00025617244 * ln))
+            + (0.0000021400943 * ln ** 2)
+            + (-0.000000072405219 * ln ** 3)
+        )
         print("kelvin: %.3f" % kelvin)
-        temp=kelvin - 273.15  # Converting Kelvin to Celcius
+        temp = kelvin - 273.15  # Converting Kelvin to Celcius
         print("temperature: %.3f" % (temp))
         return temp
     except BaseException as e:
