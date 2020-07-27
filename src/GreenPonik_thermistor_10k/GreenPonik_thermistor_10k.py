@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 ####################################################################
 ####################################################################
@@ -7,9 +8,7 @@
 ####################################################################
 ####################################################################
 """
-#!/usr/bin/env python3
 
-import sys
 import board
 import busio
 import adafruit_ads1x15.ads1115 as ADS
@@ -42,25 +41,26 @@ def read_temp():
         #          8    +/- 0.512
         #         16    +/- 0.256
         #
-        gains = (2/3, 1, 2, 4, 8, 16)
+        gains = (2 / 3, 1, 2, 4, 8, 16)
         ads.gain = gains[0]
         adc2 = AnalogIn(ads, ADS.P2)
-        print('adc2 analog: %.3f' % adc2.value)
+        print("adc2 analog: %.3f" % adc2.value)
         voltage = adc2.value * (device_vcc / 65535)
-        print('voltage: %.3f' % voltage)
+        print("voltage: %.3f" % voltage)
         # Using Ohm's Law to calculate resistance of thermistor
         resistance = voltage / ref_current
-        print('resistance: %.3f' % resistance)
+        print("resistance: %.3f" % resistance)
         # Log of the ratio of thermistor resistance and resistance at 25 deg. C
         ln = math.log(resistance / thermistor_25)
-        print('ln: %.3f' % ln)
+        print("ln: %.3f" % ln)
         # Using the Steinhart-Hart Thermistor Equation to calculate temp in K
-        kelvin = 1 / (0.0033540170 + (0.00025617244 * ln) +
-                    (0.0000021400943 * ln**2) + (-0.000000072405219 * ln**3))
-        print('kelvin: %.3f' % kelvin)
-        temp = kelvin - 273.15  # Converting Kelvin to Celcius
-        print('temperature: %.3f' % (temp))
+        kelvin = (1 / (0.0033540170 + (0.00025617244 * ln) +
+            (0.0000021400943 * ln**2) +
+            (-0.000000072405219 * ln**3))
+        print("kelvin: %.3f" % kelvin)
+        temp=kelvin - 273.15  # Converting Kelvin to Celcius
+        print("temperature: %.3f" % (temp))
         return temp
     except BaseException as e:
-        print('cannot read water temperature')
-        print('An exception occurred: {}'.format(e))
+        print("cannot read water temperature")
+        print("An exception occurred: {}".format(e))
