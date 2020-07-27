@@ -29,7 +29,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/GreenPonik/GreenPonik_thermistor_10k",
     license="MIT",
-    install_requires=["adafruit-circuitpython-ads1x15"],
+    install_requires=["board, busio, adafruit-circuitpython-ads1x15"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

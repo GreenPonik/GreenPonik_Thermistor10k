@@ -4,7 +4,7 @@
 
 import unittest
 
-from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import read_temp
+from GreenPonik_thermistor_10k import read_temp
 
 
 class TestGreenPonik_thermistor_10k(unittest.TestCase):
