@@ -19,9 +19,7 @@ import math
 
 def read_temp():
     """
-    Read thermistor 10k temperature on raspberry pi i2c bus
-    """
-    """
+    @brief Read thermistor 10k temperature on raspberry pi i2c bus
     Get temperatue in celcius
     """
     try:
