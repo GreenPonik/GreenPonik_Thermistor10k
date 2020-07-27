@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 import os
 import pathlib
-import sys
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "src"))
+# import sys
+# sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "src"))
 
 here = pathlib.Path(__file__).parent.resolve()
 
