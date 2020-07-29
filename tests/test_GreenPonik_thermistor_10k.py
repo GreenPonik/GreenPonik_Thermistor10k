@@ -8,10 +8,9 @@ from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import read_temp
 
 
 class TestGreenPonik_thermistor_10k(unittest.TestCase):
-
     def test_read_temps(self):
-        self.assertListEqual(read_temp())
+        self.assertTrue(self, type(read_temp()).__name__ == "list")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
