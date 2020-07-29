@@ -10,7 +10,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 def load_version():
     version_file = os.path.join(os.path.dirname(
-        __file__), "src/", "version.py")
+        __file__), "GreenPonik_thermistor_10k", "version.py")
     version = {}
     with open(version_file) as fd:
         exec(fd.read(), version)
@@ -27,19 +27,18 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/GreenPonik/GreenPonik_thermistor_10k",
     license="MIT",
-    install_requires=["board", "busio", "adafruit-circuitpython-ads1x15"],
+    install_requires=["adafruit-blinka", "adafruit-circuitpython-ads1x15"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    packages=find_packages(where='src'),  # Required
-    package_dir={"": "src"},
-    python_requires=">=3.6",
+    packages=find_packages(),  # Required
+    python_requires=">=3.7",
     project_urls={  # Optional
         'Source': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/',
         'Bug Reports': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/issues',
     },
     keywords="GreenPonik hydroponics thermistor 10k ohm temperature reader python hardware diy iot raspberry pi",
-    py_modules=["GreenPonik_Thermistor_10k"],
+    # py_modules=["GreenPonik_Thermistor_10k"],
 )
