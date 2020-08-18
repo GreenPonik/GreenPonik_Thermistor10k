@@ -10,6 +10,7 @@
 
 
 ![Upload Python Package](https://github.com/GreenPonik/GreenPonik_thermistor_10k/workflows/Upload%20Python%20Package/badge.svg?event=release)
+![Python package](https://github.com/GreenPonik/GreenPonik_thermistor_10k/workflows/Python%20package/badge.svg?event=push)
 
 
 ## GreenPonik_thermistor_10k.py Library for Raspberry pi
@@ -64,7 +65,6 @@ from GreenPonik_thermistor_10k import ReadThermistor10k
 if __name__ == "__main__":
     th = ReadThermistor10k()
     while True:
-        # read both celcius and fahrenheit temperatures
         temperature = th.read_temp()
         print("celcius temp %.3f °c" % temperature)
         time.sleep(1)
