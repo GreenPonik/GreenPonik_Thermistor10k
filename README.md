@@ -39,7 +39,7 @@ or
 ```
 ```Python
 
-from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import read_temp
+from GreenPonik_thermistor_10k import ReadThermistor10k
 
 ```
 
@@ -58,15 +58,17 @@ def read_temp():
 
 ```Python
 import time
-from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import read_temp
+from GreenPonik_thermistor_10k import ReadThermistor10k
 
 
 if __name__ == "__main__":
+    th = ReadThermistor10k()
     while True:
         # read both celcius and fahrenheit temperatures
-        temperature = .read_temp()
-        print("celcius temp %.3f" % temperature)
+        temperature = th.read_temp()
+        print("celcius temp %.3f °c" % temperature)
         time.sleep(1)
+
 
 ```
 

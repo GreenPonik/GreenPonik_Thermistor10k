@@ -3,13 +3,40 @@
 # setup.py that excludes installing the "tests" package
 
 import unittest
+import sys
+from unittest.mock import patch, MagicMock
 
-from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import read_temp
+
+class BoardMock:
+    def __init__(self):
+        self._scl = 18
+        self._sda = 15
+
+    def SCL(self):
+        return self._scl
+
+    def SDA(self):
+        return self._sda
+
+
+class BusioMock(MagicMock()):
+    def I2C(self, sda, scl):
+        return True
+
+
+sys.modules["board"] = BoardMock()
+sys.modules["busio"] = BusioMock()
 
 
 class TestGreenPonik_thermistor_10k(unittest.TestCase):
-    def test_read_temps(self):
-        self.assertIsInstance(self, read_temp(), float)
+    @patch("GreenPonik_thermistor_10k.ReadThermistor10k.read_temp")
+    def test_read_temp(self, MockReadTemp):
+        readTemp = MockReadTemp()
+        expected = 17.65
+        readTemp.return_value = expected
+        ecValue = readTemp()
+        self.assertIsNotNone(self, ecValue)
+        self.assertTrue(self, type(ecValue).__name__ == "float")
 
 
 if __name__ == "__main__":
