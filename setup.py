@@ -1,44 +1,64 @@
-from setuptools import setup, find_packages
 import os
 import pathlib
+from setuptools import setup, find_packages
+
+# Package meta-data.
+NAME = "greenponik-thermistor-10k"
+DESCRIPTION = "Read temperature on thermistor 10k through Python3 on raspberry pi"
+URL = "https://github.com/GreenPonik/GreenPonik_thermistor_10k"
+EMAIL = "contact@greenponik.com"
+AUTHOR = "GreenPonik SAS"
+REQUIRES_PYTHON = ">=3.6.0"
+VERSION = "0.0.3"
+
+# What packages are required for this module to be executed?
+REQUIRED = [
+    # 'requests', 'maya', 'records',
+    'adafruit-blinka',
+    'adafruit-circuitpython-ads1x15'
+]
+
+# What packages are optional?
+EXTRAS = {
+    # 'fancy feature': ['django'],
+}
 
 here = pathlib.Path(__file__).parent.resolve()
 
 # Get the long description from the README file
-long_description = (here / 'README.md').read_text(encoding='utf-8')
+long_description = (here / "README.md").read_text(encoding="utf-8")
 
-
-def load_version():
-    version_file = os.path.join(os.path.dirname(
-        __file__), "GreenPonik_thermistor_10k", "version.py")
-    version = {}
-    with open(version_file) as fd:
-        exec(fd.read(), version)
-    return version["__version__"]
-
+# Load the package's version.py module as a dictionary.
+about = {}
+if not VERSION:
+    # project_slug = NAME.lower().replace("-", "_").replace(" ", "_")
+    with open(os.path.join(here, "version.py")) as f:
+        exec(f.read(), about)
+else:
+    about["__version__"] = VERSION
 
 setup(
-    name="greenponik-thermistor-10k",
-    version=load_version(),
-    author="GreenPonik SAS",
-    author_email="contact@greenponik.com",
-    description="Read temperature on thermistor 10k through Python3 on raspberry pi",
+    name=NAME,
+    version=about["__version__"],
+    author=AUTHOR,
+    author_email=EMAIL,
+    description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/GreenPonik/GreenPonik_thermistor_10k",
+    url=URL,
     license="MIT",
-    install_requires=["adafruit-blinka", "adafruit-circuitpython-ads1x15"],
+    install_requires=REQUIRED,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    packages=find_packages(),  # Required
-    python_requires=">=3.7",
+    packages=find_packages(exclude=("tests", "docs")),
+    python_requires=REQUIRES_PYTHON,
     project_urls={  # Optional
         'Source': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/',
         'Bug Reports': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/issues',
     },
-    keywords="GreenPonik hydroponics thermistor 10k ohm temperature reader python hardware diy iot raspberry pi",
-    # py_modules=["GreenPonik_Thermistor_10k"],
+    keywords="GreenPonik hydroponics thermistor 10k ohm \
+         temperature reader python hardware diy iot raspberry pi",
 )

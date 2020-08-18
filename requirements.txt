@@ -1,7 +1,13 @@
-adafruit-circuitpython-ads1x15==2.1.2;
-
 # install from github
 # pip3 install -e git+https://github.com/GreenPonik/GreenPonik_thermistor_10k.git#egg=greenponik-thermistor_10k
 
 # upgrade from github
 # pip3 install -e git+https://github.com/GreenPonik/GreenPonik_thermistor_10k.git#egg=greenponik-thermistor_10k --upgrade
+
+adafruit-blinka>=5.2.3
+adafruit-circuitpython-ads1x15==2.1.2;
+tox==3.18.0
+twine==3.2.0
+pytest==5.4.3
+flake8==3.8.3
+check-manifest==0.42
