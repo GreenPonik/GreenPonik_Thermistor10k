@@ -66,6 +66,7 @@ class ReadThermistor10k:
             print("kelvin: %.3f" % kelvin)
             temp = kelvin - 273.15  # Converting Kelvin to Celcius
             print("temperature: %.3f" % (temp))
+            i2c.deinit()
             return temp
         except BaseException as e:
             print("cannot read water temperature")

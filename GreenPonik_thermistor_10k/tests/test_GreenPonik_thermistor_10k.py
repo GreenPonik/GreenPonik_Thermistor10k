@@ -28,13 +28,13 @@ sys.modules["board"] = BoardMock()
 sys.modules["busio"] = BusioMock()
 
 
-class TestGreenPonik_thermistor_10k(unittest.TestCase):
-    @patch("GreenPonik_thermistor_10k.ReadThermistor10k.read_temp")
-    def test_read_temp(self, MockReadTemp):
-        readTemp = MockReadTemp()
+class Test_GreenPonik_thermistor_10k(unittest.TestCase):
+    @patch("GreenPonik_thermistor_10k.ReadThermistor10k")
+    def test_read_temp(self, Mock):
+        th = Mock()
         expected = 17.65
-        readTemp.return_value = expected
-        ecValue = readTemp()
+        th.readTemp.return_value = expected
+        ecValue = th.readTemp()
         self.assertIsNotNone(self, ecValue)
         self.assertTrue(self, type(ecValue).__name__ == "float")
 

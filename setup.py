@@ -4,7 +4,8 @@ from setuptools import setup, find_packages
 
 # Package meta-data.
 NAME = "greenponik-thermistor-10k"
-DESCRIPTION = "Read temperature on thermistor 10k through Python3 on raspberry pi"
+DESCRIPTION = "Read temperature on thermistor \
+10k through Python3 on raspberry pi"
 URL = "https://github.com/GreenPonik/GreenPonik_thermistor_10k"
 EMAIL = "contact@greenponik.com"
 AUTHOR = "GreenPonik SAS"
@@ -53,11 +54,12 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    packages=find_packages(exclude=("tests", "docs")),
+    packages=find_packages(exclude=("docs")),
     python_requires=REQUIRES_PYTHON,
     project_urls={  # Optional
         'Source': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/',
-        'Bug Reports': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/issues',
+        'Bug Reports': 'https://github.com/GreenPonik/\
+        GreenPonik_thermistor_10k/issues',
     },
     keywords="GreenPonik hydroponics thermistor 10k ohm \
          temperature reader python hardware diy iot raspberry pi",
