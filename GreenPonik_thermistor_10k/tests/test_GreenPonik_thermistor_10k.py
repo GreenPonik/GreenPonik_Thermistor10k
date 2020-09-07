@@ -29,7 +29,7 @@ sys.modules["busio"] = BusioMock()
 
 
 class Test_GreenPonik_thermistor_10k(unittest.TestCase):
-    @patch("GreenPonik_thermistor_10k.ReadThermistor10k")
+    @patch("GreenPonik_thermistor_10k.GreenPonik_thermistor_10k.ReadThermistor10k")
     def test_read_temp(self, Mock):
         th = Mock()
         expected = 17.65

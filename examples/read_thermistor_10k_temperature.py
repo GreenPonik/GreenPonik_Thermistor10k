@@ -1,5 +1,5 @@
 import time
-from GreenPonik_thermistor_10k import ReadThermistor10k
+from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import ReadThermistor10k
 
 
 if __name__ == "__main__":

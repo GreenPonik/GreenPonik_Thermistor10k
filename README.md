@@ -40,7 +40,7 @@ or
 ```
 ```Python
 
-from GreenPonik_thermistor_10k import ReadThermistor10k
+from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import ReadThermistor10k
 
 ```
 
@@ -59,7 +59,7 @@ def read_temp():
 
 ```Python
 import time
-from GreenPonik_thermistor_10k import ReadThermistor10k
+from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import ReadThermistor10k
 
 
 if __name__ == "__main__":
