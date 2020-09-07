@@ -18,6 +18,11 @@ import math
 
 
 class ReadThermistor10k:
+
+    def __init__(self, scl_pin=None, sda_pin=None):
+        self._scl_pin = scl_pin if not None else board.SCL
+        self._sda_pin = sda_pin if not None else board.SDA
+
     def read_temp(self):
         """
         @brief Read thermistor 10k temperature on raspberry pi i2c bus
@@ -25,7 +30,7 @@ class ReadThermistor10k:
         """
         try:
             # Create the I2C bus
-            i2c = busio.I2C(board.SCL, board.SDA)
+            i2c = busio.I2C(self._scl_pin, self._sda_pin)
             # Create the ADS object
             ads = ADS.ADS1115(i2c)
             device_vcc = 5.0
