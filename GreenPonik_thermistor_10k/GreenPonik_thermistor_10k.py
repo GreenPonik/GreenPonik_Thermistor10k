@@ -20,8 +20,8 @@ import math
 class ReadThermistor10k:
 
     def __init__(self, scl_pin=None, sda_pin=None):
-        self._scl_pin = scl_pin if not None else board.SCL
-        self._sda_pin = sda_pin if not None else board.SDA
+        self._scl_pin = scl_pin if None is not scl_pin else board.SCL
+        self._sda_pin = sda_pin if None is not sda_pin else board.SDA
 
     def read_temp(self):
         """
