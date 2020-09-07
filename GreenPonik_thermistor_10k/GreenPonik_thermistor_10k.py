@@ -23,6 +23,14 @@ class ReadThermistor10k:
         self._scl_pin = scl_pin if None is not scl_pin else board.SCL
         self._sda_pin = sda_pin if None is not sda_pin else board.SDA
 
+    @property
+    def scl_pin(self):
+        return self._scl_pin
+
+    @property
+    def sda_pin(self):
+        return self._sda_pin
+
     def read_temp(self):
         """
         @brief Read thermistor 10k temperature on raspberry pi i2c bus
