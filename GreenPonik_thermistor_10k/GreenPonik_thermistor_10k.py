@@ -10,8 +10,9 @@
 ####################################################################
 """
 
-import board
-import busio
+from adafruit_extended_bus import ExtendedI2C as I2C
+# import board
+# import busio
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 import math
@@ -19,17 +20,22 @@ import math
 
 class ReadThermistor10k:
 
-    def __init__(self, scl_pin=None, sda_pin=None):
-        self._scl_pin = scl_pin if None is not scl_pin else board.SCL
-        self._sda_pin = sda_pin if None is not sda_pin else board.SDA
+    def __init__(self, bus=None):
+        # self._scl_pin = scl_pin if None is not scl_pin else board.SCL
+        # self._sda_pin = sda_pin if None is not sda_pin else board.SDA
+        self._bus = bus if None is not bus else self.DEFAULT_BUS
 
     @property
-    def scl_pin(self):
-        return self._scl_pin
+    def bus(self):
+        return self._bus
 
-    @property
-    def sda_pin(self):
-        return self._sda_pin
+    # @property
+    # def scl_pin(self):
+    #     return self._scl_pin
+
+    # @property
+    # def sda_pin(self):
+    #     return self._sda_pin
 
     def read_temp(self):
         """
@@ -38,7 +44,8 @@ class ReadThermistor10k:
         """
         try:
             # Create the I2C bus
-            i2c = busio.I2C(self._scl_pin, self._sda_pin)
+            # i2c = busio.I2C(self._scl_pin, self._sda_pin)
+            i2c = I2C(self._bus)
             # Create the ADS object
             ads = ADS.ADS1115(i2c)
             device_vcc = 5.0
