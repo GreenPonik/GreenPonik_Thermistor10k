@@ -19,7 +19,7 @@ import math
 
 class ReadThermistor10k:
 
-    DEFAULT_ADDR = 0x23
+    DEFAULT_ADDR = 0x48
     DEFAULT_BUS = 1
 
     def __init__(self, bus=None):
