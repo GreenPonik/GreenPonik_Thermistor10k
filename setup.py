@@ -16,7 +16,8 @@ VERSION = "0.0.3"
 REQUIRED = [
     # 'requests', 'maya', 'records',
     'adafruit-blinka',
-    'adafruit-circuitpython-ads1x15'
+    'adafruit-circuitpython-ads1x15',
+    'adafruit-extended-bus'
 ]
 
 # What packages are optional?
