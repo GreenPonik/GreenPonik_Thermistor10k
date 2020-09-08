@@ -4,28 +4,23 @@
 
 import unittest
 import sys
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 
-class BoardMock:
+class SmbusMock():
+    pass
+
+
+class FCNTLMock:
     def __init__(self):
-        self._scl = 18
-        self._sda = 15
+        pass
 
-    def SCL(self):
-        return self._scl
-
-    def SDA(self):
-        return self._sda
+    def ioctl():
+        pass
 
 
-class BusioMock(MagicMock()):
-    def I2C(self, sda, scl):
-        return True
-
-
-sys.modules["board"] = BoardMock()
-sys.modules["busio"] = BusioMock()
+sys.modules["fcntl"] = FCNTLMock()
+sys.modules["smbus"] = SmbusMock()
 
 
 class Test_GreenPonik_thermistor_10k(unittest.TestCase):
