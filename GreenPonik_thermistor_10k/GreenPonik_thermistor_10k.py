@@ -12,12 +12,14 @@
 
 from adafruit_extended_bus import ExtendedI2C as I2C
 import adafruit_ads1x15.ads1115 as ADS
+from adafruit_ads1x15.ads1x15 import Mode
 from adafruit_ads1x15.analog_in import AnalogIn
 import math
 
 
 class ReadThermistor10k:
 
+    DEFAULT_ADDR = 0x23
     DEFAULT_BUS = 1
 
     def __init__(self, bus=None):
@@ -27,22 +29,19 @@ class ReadThermistor10k:
     def bus(self):
         return self._bus
 
-    def read_temp(self):
+    def read_temp(self, addr=DEFAULT_ADDR):
         """
         @brief Read thermistor 10k temperature on raspberry pi i2c bus
         Get temperatue in celcius
         """
         try:
-            # Create the I2C bus
-            # i2c = busio.I2C(self._scl_pin, self._sda_pin)
             with I2C(self._bus) as i2c:
-                # Create the ADS object
-                ads = ADS.ADS1115(i2c)
                 device_vcc = 5.0
                 voltage = 0.0
                 thermistor_25 = 10000
                 ref_current = 0.0001
-                # The ADS1015 and ADS1115 both have the same gain options.
+
+                """ The ADS1015 and ADS1115 both have the same gain options.
                 #
                 #       GAIN    RANGE (V)
                 #       ----    ---------
@@ -52,9 +51,16 @@ class ReadThermistor10k:
                 #          4    +/- 1.024
                 #          8    +/- 0.512
                 #         16    +/- 0.256
-                #
+                """
                 gains = (2 / 3, 1, 2, 4, 8, 16)
-                ads.gain = gains[0]
+                # Create the ADS object
+                ads = ADS.ADS1115(
+                    i2c,
+                    gain=gains[0],
+                    data_rate=None,
+                    mode=Mode.SINGLE,
+                    address=addr
+                )
                 adc2 = AnalogIn(ads, ADS.P2)
                 print("adc2 analog: %.3f" % adc2.value)
                 voltage = adc2.value * (device_vcc / 65535)
