@@ -22,8 +22,8 @@ class Thermistor10k:
     DEFAULT_ADDR = 0x48
     DEFAULT_BUS = 1
 
-    def __init__(self, bus=None):
-        self._bus = bus if None is not bus else self.DEFAULT_BUS
+    def __init__(self, bus=DEFAULT_BUS):
+        self._bus = bus
 
     @property
     def bus(self):
