@@ -1,26 +1,26 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=alert_status)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=alert_status)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
 
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=ncloc)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=ncloc)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
 
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=security_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_thermistor_10k&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_thermistor_10k)
-
-
-![Upload Python Package](https://github.com/GreenPonik/GreenPonik_thermistor_10k/workflows/Upload%20Python%20Package/badge.svg?event=release)
-![Python package](https://github.com/GreenPonik/GreenPonik_thermistor_10k/workflows/Python%20package/badge.svg?event=push)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=security_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
 
 
-## GreenPonik_thermistor_10k.py Library for Raspberry pi
+![Upload Python Package](https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Upload%20Python%20Package/badge.svg?event=release)
+![Python package](https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Python%20package/badge.svg?event=push)
+
+
+## GreenPonik_Thermistor10k.py Library for Raspberry pi
 ---------------------------------------------------------
 This is the sample code for read temperature with thermistor 10k sensor on i2c bus.
 
 
 ## Table of Contents
 
-- [GreenPonik_thermistor_10k.py Library for Raspberry pi](#greenponikthermistor10kpy-library-for-raspberry-pi)
+- [GreenPonik_Thermistor10k.py Library for Raspberry pi](#greenponikthermistor10kpy-library-for-raspberry-pi)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Methods](#methods)
@@ -30,17 +30,17 @@ This is the sample code for read temperature with thermistor 10k sensor on i2c b
 
 ## Installation
 ```shell
-> git clone https://github.com/GreenPonik/GreenPonik_thermistor_10k.git
-cd GreenPonik_thermistor_10k
+> git clone https://github.com/GreenPonik/GreenPonik_Thermistor10k.git
+cd GreenPonik_Thermistor10k
 pip3 install -r requirements.txt
 
 or 
 
-> pip install greenponik-thermistor-10k
+> pip install greenponik-thermistor10k
 ```
 ```Python
 
-from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import ReadThermistor10k
+from GreenPonik_Thermistor10k.Thermistor10k import Thermistor10k
 
 ```
 
@@ -59,16 +59,15 @@ def read_temp():
 
 ```Python
 import time
-from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import ReadThermistor10k
+from GreenPonik_Thermistor10k.Thermistor10k import Thermistor10k
 
 
 if __name__ == "__main__":
-    th = ReadThermistor10k()
+    th = Thermistor10k()
     while True:
         temperature = th.read_temp()
         print("celcius temp %.3f °c" % temperature)
         time.sleep(1)
-
 
 ```
 

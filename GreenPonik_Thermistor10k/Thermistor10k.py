@@ -17,7 +17,7 @@ from adafruit_ads1x15.analog_in import AnalogIn
 import math
 
 
-class ReadThermistor10k:
+class Thermistor10k:
 
     DEFAULT_ADDR = 0x48
     DEFAULT_BUS = 1

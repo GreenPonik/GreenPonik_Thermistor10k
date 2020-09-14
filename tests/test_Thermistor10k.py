@@ -23,8 +23,8 @@ sys.modules["fcntl"] = FCNTLMock()
 sys.modules["smbus"] = SmbusMock()
 
 
-class Test_GreenPonik_thermistor_10k(unittest.TestCase):
-    @patch("GreenPonik_thermistor_10k.GreenPonik_thermistor_10k.ReadThermistor10k")
+class Test_Thermistor10k(unittest.TestCase):
+    @patch("GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k")
     def test_read_temp(self, Mock):
         th = Mock()
         expected = 17.65

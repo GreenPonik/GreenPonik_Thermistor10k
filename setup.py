@@ -6,11 +6,11 @@ from setuptools import setup, find_packages
 NAME = "greenponik-thermistor-10k"
 DESCRIPTION = "Read temperature on thermistor \
 10k through Python3 on raspberry pi"
-URL = "https://github.com/GreenPonik/GreenPonik_thermistor_10k"
+URL = "https://github.com/GreenPonik/GreenPonik_Thermistor10k"
 EMAIL = "contact@greenponik.com"
 AUTHOR = "GreenPonik SAS"
 REQUIRES_PYTHON = ">=3.6.0"
-VERSION = "0.0.3"
+VERSION = "0.0.4"
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -58,9 +58,9 @@ setup(
     packages=find_packages(exclude=("docs")),
     python_requires=REQUIRES_PYTHON,
     project_urls={  # Optional
-        'Source': 'https://github.com/GreenPonik/GreenPonik_thermistor_10k/',
+        'Source': 'https://github.com/GreenPonik/GreenPonik_Thermistor10k/',
         'Bug Reports': 'https://github.com/GreenPonik/\
-        GreenPonik_thermistor_10k/issues',
+        GreenPonik_Thermistor10k/issues',
     },
     keywords="GreenPonik hydroponics thermistor 10k ohm \
          temperature reader python hardware diy iot raspberry pi",

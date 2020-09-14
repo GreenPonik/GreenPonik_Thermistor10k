@@ -1,9 +1,9 @@
 import time
-from GreenPonik_thermistor_10k.GreenPonik_thermistor_10k import ReadThermistor10k
+from GreenPonik_Thermistor10k.Thermistor10k import Thermistor10k
 
 
 if __name__ == "__main__":
-    th = ReadThermistor10k()
+    th = Thermistor10k()
     while True:
         temperature = th.read_temp()
         print("celcius temp %.3f °c" % temperature)
