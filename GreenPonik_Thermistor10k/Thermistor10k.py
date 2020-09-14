@@ -22,14 +22,19 @@ class Thermistor10k:
     DEFAULT_ADDR = 0x48
     DEFAULT_BUS = 1
 
-    def __init__(self, bus=DEFAULT_BUS):
+    def __init__(self, bus=DEFAULT_BUS, addr=DEFAULT_ADDR):
         self._bus = bus
+        self._addr = addr
 
     @property
     def bus(self):
         return self._bus
 
-    def read_temp(self, addr=DEFAULT_ADDR):
+    @property
+    def address(self):
+        return self._addr
+
+    def read_temp(self):
         """
         @brief Read thermistor 10k temperature on raspberry pi i2c bus
         Get temperatue in celcius
@@ -59,7 +64,7 @@ class Thermistor10k:
                     gain=gains[0],
                     data_rate=None,
                     mode=Mode.SINGLE,
-                    address=addr
+                    address=self._addr,
                 )
                 adc2 = AnalogIn(ads, ADS.P2)
                 print("adc2 analog: %.3f" % adc2.value)
