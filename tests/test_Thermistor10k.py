@@ -8,6 +8,7 @@ from unittest.mock import patch
 
 
 class SmbusMock():
+    # simultate the smbus method just for tests
     pass
 
 
