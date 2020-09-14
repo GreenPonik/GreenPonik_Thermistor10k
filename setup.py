@@ -10,7 +10,7 @@ URL = "https://github.com/GreenPonik/GreenPonik_Thermistor10k"
 EMAIL = "contact@greenponik.com"
 AUTHOR = "GreenPonik SAS"
 REQUIRES_PYTHON = ">=3.6.0"
-VERSION = "0.0.4"
+VERSION = "0.0.6"
 
 # What packages are required for this module to be executed?
 REQUIRED = [
