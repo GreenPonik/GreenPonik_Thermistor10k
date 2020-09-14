@@ -25,6 +25,7 @@ class Thermistor10k:
     def __init__(self, bus=DEFAULT_BUS, addr=DEFAULT_ADDR):
         self._bus = bus
         self._addr = addr
+        self._debug
 
     @property
     def bus(self):
@@ -33,6 +34,14 @@ class Thermistor10k:
     @property
     def address(self):
         return self._addr
+
+    @property
+    def debug(self):
+        return self._debug
+
+    @debug.setter
+    def debug(self, d):
+        self._debug = d
 
     def read_temp(self):
         """
@@ -47,15 +56,14 @@ class Thermistor10k:
                 ref_current = 0.0001
 
                 """ The ADS1015 and ADS1115 both have the same gain options.
-                #
-                #       GAIN    RANGE (V)
-                #       ----    ---------
-                #        2/3    +/- 6.144
-                #          1    +/- 4.096
-                #          2    +/- 2.048
-                #          4    +/- 1.024
-                #          8    +/- 0.512
-                #         16    +/- 0.256
+                       GAIN    RANGE (V)
+                       ----    ---------
+                        2/3    +/- 6.144
+                          1    +/- 4.096
+                          2    +/- 2.048
+                          4    +/- 1.024
+                          8    +/- 0.512
+                         16    +/- 0.256
                 """
                 gains = (2 / 3, 1, 2, 4, 8, 16)
                 # Create the ADS object
@@ -67,16 +75,12 @@ class Thermistor10k:
                     address=self._addr,
                 )
                 adc2 = AnalogIn(ads, ADS.P2)
-                print("adc2 analog: %.3f" % adc2.value)
                 voltage = adc2.value * (device_vcc / 65535)
-                print("voltage: %.3f" % voltage)
                 # Using Ohm's Law to calculate resistance of thermistor
                 resistance = voltage / ref_current
-                print("resistance: %.3f" % resistance)
                 # Log of the ratio of thermistor resistance
                 # and resistance at 25 deg. C
                 ln = math.log(resistance / thermistor_25)
-                print("ln: %.3f" % ln)
                 # Using the Steinhart-Hart Thermistor
                 # Equation to calculate temp in K
                 kelvin = (
@@ -84,9 +88,14 @@ class Thermistor10k:
                     + (0.0000021400943 * ln ** 2)
                     + (-0.000000072405219 * ln ** 3)
                 )
-                print("kelvin: %.3f" % kelvin)
                 temp = kelvin - 273.15  # Converting Kelvin to Celcius
-                print("temperature: %.3f" % (temp))
+                if self._debug:
+                    print("adc2 analog: %.3f" % adc2.value)
+                    print("voltage: %.3f" % voltage)
+                    print("resistance: %.3f" % resistance)
+                    print("ln: %.3f" % ln)
+                    print("kelvin: %.3f" % kelvin)
+                    print("Thermistor 10k temperature: %.3f" % (temp))
                 return temp
         except Exception as e:
             print("cannot read water temperature, An exception occurred: {}".format(e))
