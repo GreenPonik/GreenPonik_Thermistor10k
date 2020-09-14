@@ -3,7 +3,7 @@ import pathlib
 from setuptools import setup, find_packages
 
 # Package meta-data.
-NAME = "greenponik-thermistor-10k"
+NAME = "greenponik-thermistor10k"
 DESCRIPTION = "Read temperature on thermistor \
 10k through Python3 on raspberry pi"
 URL = "https://github.com/GreenPonik/GreenPonik_Thermistor10k"
