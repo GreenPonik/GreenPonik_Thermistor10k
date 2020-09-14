@@ -84,5 +84,4 @@ class Thermistor10k:
                 print("temperature: %.3f" % (temp))
                 return temp
         except Exception as e:
-            print("cannot read water temperature")
-            print("An exception occurred: {}".format(e))
+            print("cannot read water temperature, An exception occurred: {}".format(e))
