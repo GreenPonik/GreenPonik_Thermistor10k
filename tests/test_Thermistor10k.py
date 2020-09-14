@@ -12,9 +12,6 @@ class SmbusMock():
 
 
 class FCNTLMock:
-    def __init__(self):
-        pass
-
     def ioctl(self):
         pass
 
@@ -23,15 +20,15 @@ sys.modules["fcntl"] = FCNTLMock()
 sys.modules["smbus"] = SmbusMock()
 
 
-class Test_Thermistor10k(unittest.TestCase):
+class TestThermistor10k(unittest.TestCase):
     @patch("GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k")
-    def test_read_temp(self, Mock):
-        th = Mock()
+    def test_read_temp(self, MockTh):
+        th = MockTh()
         expected = 17.65
         th.readTemp.return_value = expected
-        ecValue = th.readTemp()
-        self.assertIsNotNone(self, ecValue)
-        self.assertTrue(self, type(ecValue).__name__ == "float")
+        ec_value = th.readTemp()
+        self.assertIsNotNone(self, ec_value)
+        self.assertTrue(self, type(ec_value).__name__ == "float")
 
 
 if __name__ == "__main__":

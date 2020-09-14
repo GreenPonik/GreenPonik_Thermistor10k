@@ -15,9 +15,9 @@ VERSION = "0.0.4"
 # What packages are required for this module to be executed?
 REQUIRED = [
     # 'requests', 'maya', 'records',
-    'adafruit-blinka',
-    'adafruit-circuitpython-ads1x15',
-    'adafruit-extended-bus'
+    "adafruit-blinka",
+    "adafruit-circuitpython-ads1x15",
+    "adafruit-extended-bus",
 ]
 
 # What packages are optional?
@@ -33,7 +33,6 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 # Load the package's version.py module as a dictionary.
 about = {}
 if not VERSION:
-    # project_slug = NAME.lower().replace("-", "_").replace(" ", "_")
     with open(os.path.join(here, "version.py")) as f:
         exec(f.read(), about)
 else:
@@ -58,9 +57,8 @@ setup(
     packages=find_packages(exclude=("docs")),
     python_requires=REQUIRES_PYTHON,
     project_urls={  # Optional
-        'Source': 'https://github.com/GreenPonik/GreenPonik_Thermistor10k/',
-        'Bug Reports': 'https://github.com/GreenPonik/\
-        GreenPonik_Thermistor10k/issues',
+        "Source": "https://github.com/GreenPonik/GreenPonik_Thermistor10k/",
+        "Bug Reports": "https://github.com/GreenPonik/GreenPonik_Thermistor10k/issues",
     },
     keywords="GreenPonik hydroponics thermistor 10k ohm \
          temperature reader python hardware diy iot raspberry pi",

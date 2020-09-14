@@ -11,9 +11,9 @@
 """
 
 from adafruit_extended_bus import ExtendedI2C as I2C
-import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.ads1x15 import Mode
 from adafruit_ads1x15.analog_in import AnalogIn
+import adafruit_ads1x15.ads1115 as ADS
 import math
 
 
