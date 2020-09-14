@@ -83,6 +83,6 @@ class Thermistor10k:
                 temp = kelvin - 273.15  # Converting Kelvin to Celcius
                 print("temperature: %.3f" % (temp))
                 return temp
-        except BaseException as e:
+        except Exception as e:
             print("cannot read water temperature")
             print("An exception occurred: {}".format(e))

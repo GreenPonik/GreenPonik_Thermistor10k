@@ -13,6 +13,7 @@ class SmbusMock():
 
 class FCNTLMock:
     def ioctl(self):
+        # simultate the FCNTL.ioctl method just for tests
         pass
 
 
@@ -22,8 +23,8 @@ sys.modules["smbus"] = SmbusMock()
 
 class TestThermistor10k(unittest.TestCase):
     @patch("GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k")
-    def test_read_temp(self, MockTh):
-        th = MockTh()
+    def test_read_temp(self, mock_th):
+        th = mock_th()
         expected = 17.65
         th.readTemp.return_value = expected
         ec_value = th.readTemp()
