@@ -30,7 +30,6 @@ class Thermistor10k:
     def __enter__(self):
         """Context manager enter function."""
         # Just return this object so it can be used in a with statement, like
-        # with WaterPumpDriver(bus=1, addr=100) as driver:
         #     # do stuff!
         return self
 
