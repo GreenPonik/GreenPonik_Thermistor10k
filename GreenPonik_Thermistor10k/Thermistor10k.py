@@ -60,10 +60,14 @@ class Thermistor10k:
         """
         try:
             with I2C(self._bus) as i2c:
-                device_vcc = 5.0
-                voltage = 0.0
-                thermistor_25 = 10000
-                ref_current = 0.0001
+                # device_vcc = 5.0
+                # voltage = 0.0
+                # thermistor_25 = 10000
+                # ref_current = 0.0001
+
+                SLOPE = -0.01099
+                INTERCEPT = 156.989
+
 
                 """ The ADS1015 and ADS1115 both have the same gain options.
                        GAIN    RANGE (V)
@@ -85,26 +89,27 @@ class Thermistor10k:
                     address=self._addr,
                 )
                 adc2 = AnalogIn(ads, ADS.P2)
-                voltage = adc2.value * (device_vcc / 65535)
-                # Using Ohm's Law to calculate resistance of thermistor
-                resistance = voltage / ref_current
-                # Log of the ratio of thermistor resistance
-                # and resistance at 25 deg. C
-                ln = math.log(resistance / thermistor_25)
-                # Using the Steinhart-Hart Thermistor
-                # Equation to calculate temp in K
-                kelvin = (
-                    1 / (0.0033540170 + (0.00025617244 * ln))
-                    + (0.0000021400943 * ln ** 2)
-                    + (-0.000000072405219 * ln ** 3)
-                )
-                temp = kelvin - 273.15  # Converting Kelvin to Celcius
+                # voltage = adc2.value * (device_vcc / 65535)
+                # # Using Ohm's Law to calculate resistance of thermistor
+                # resistance = voltage / ref_current
+                # # Log of the ratio of thermistor resistance
+                # # and resistance at 25 deg. C
+                # ln = math.log(resistance / thermistor_25)
+                # # Using the Steinhart-Hart Thermistor
+                # # Equation to calculate temp in K
+                # kelvin = (
+                #     1 / (0.0033540170 + (0.00025617244 * ln))
+                #     + (0.0000021400943 * ln ** 2)
+                #     + (-0.000000072405219 * ln ** 3)
+                # )
+                # temp = kelvin - 273.15  # Converting Kelvin to Celcius
+                temp = (adc2 * SLOPE) + INTERCEPT
                 if self._debug:
                     print("adc2 analog: %.3f" % adc2.value)
-                    print("voltage: %.3f" % voltage)
-                    print("resistance: %.3f" % resistance)
-                    print("ln: %.3f" % ln)
-                    print("kelvin: %.3f" % kelvin)
+                    # print("voltage: %.3f" % voltage)
+                    # print("resistance: %.3f" % resistance)
+                    # print("ln: %.3f" % ln)
+                    # print("kelvin: %.3f" % kelvin)
                     print("Thermistor 10k temperature: %.3f" % (temp))
                 return temp
         except Exception as e:
