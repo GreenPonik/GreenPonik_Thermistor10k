@@ -11,10 +11,10 @@
 """
 
 from adafruit_extended_bus import ExtendedI2C as I2C
-from adafruit_ads1x15.ads1x15 import Mode
 from adafruit_ads1x15.analog_in import AnalogIn
-import adafruit_ads1x15.ads1115 as ADS
-import math
+from adafruit_ads1x15.ads1x15 import _ADS1X15_CONFIG_GAIN
+import adafruit_ads1x15.ads1015 as ADS_1015
+import adafruit_ads1x15.ads1115 as ADS_1115
 
 
 class Thermistor10k:
@@ -53,6 +53,22 @@ class Thermistor10k:
     def debug(self, d):
         self._debug = d
 
+    def slope_calculator(self, x_list, y_list):
+        """
+        slope m = DY/DX
+        """
+        slope = (y_list[1] - y_list[0]) / (x_list[1] - x_list[0])
+        print("slope: %.3f" % slope)
+        return slope
+
+    def intercept_calculator(self, slope, x, y):
+        """
+        b = y -mx
+        """
+        intercept = y - slope * x
+        print("intercept: %.3f" % intercept)
+        return intercept
+
     def read_temp(self):
         """
         @brief Read thermistor 10k temperature on raspberry pi i2c bus
@@ -60,15 +76,18 @@ class Thermistor10k:
         """
         try:
             with I2C(self._bus) as i2c:
-                # device_vcc = 5.0
-                # voltage = 0.0
-                # thermistor_25 = 10000
-                # ref_current = 0.0001
+                """these points are determinated by lab test with both ec probe and manual thermometer"""
+                x1 = 12272
+                y1 = 25.9
+                x2 = 10752
+                y2 = 34.5
 
-                SLOPE = -0.01099
-                INTERCEPT = 156.989
+                SLOPE = self.slope_calculator([x1, x2], [y1, y2])
+                INTERCEPT = self.intercept_calculator(SLOPE, x1, y1)
 
-
+                if self.debug:
+                    print("slope: ", SLOPE)
+                    print("intercept: ", INTERCEPT)
                 """ The ADS1015 and ADS1115 both have the same gain options.
                        GAIN    RANGE (V)
                        ----    ---------
@@ -79,37 +98,18 @@ class Thermistor10k:
                           8    +/- 0.512
                          16    +/- 0.256
                 """
-                gains = (2 / 3, 1, 2, 4, 8, 16)
+                gains = [g for g in _ADS1X15_CONFIG_GAIN.keys()]
                 # Create the ADS object
-                ads = ADS.ADS1115(
+                ads = ADS_1115.ADS1115(
                     i2c,
                     gain=gains[0],
-                    data_rate=None,
-                    mode=Mode.SINGLE,
                     address=self._addr,
                 )
-                adc2 = AnalogIn(ads, ADS.P2)
-                # voltage = adc2.value * (device_vcc / 65535)
-                # # Using Ohm's Law to calculate resistance of thermistor
-                # resistance = voltage / ref_current
-                # # Log of the ratio of thermistor resistance
-                # # and resistance at 25 deg. C
-                # ln = math.log(resistance / thermistor_25)
-                # # Using the Steinhart-Hart Thermistor
-                # # Equation to calculate temp in K
-                # kelvin = (
-                #     1 / (0.0033540170 + (0.00025617244 * ln))
-                #     + (0.0000021400943 * ln ** 2)
-                #     + (-0.000000072405219 * ln ** 3)
-                # )
-                # temp = kelvin - 273.15  # Converting Kelvin to Celcius
-                temp = (adc2 * SLOPE) + INTERCEPT
+                adc2 = AnalogIn(ads, ADS_1115.P2)
+                temp = (adc2.value * SLOPE) + INTERCEPT
                 if self._debug:
-                    print("adc2 analog: %.3f" % adc2.value)
-                    # print("voltage: %.3f" % voltage)
-                    # print("resistance: %.3f" % resistance)
-                    # print("ln: %.3f" % ln)
-                    # print("kelvin: %.3f" % kelvin)
+                    print("adc2 analog: ", adc2.value)
+                    print("adc2 voltage: ", adc2.voltage)
                     print("Thermistor 10k temperature: %.3f" % (temp))
                 return temp
         except Exception as e:
