@@ -100,11 +100,13 @@ class Thermistor10k:
                 """
                 gains = [g for g in _ADS1X15_CONFIG_GAIN.keys()]
                 # Create the ADS object
+                # ads = ADS_1015.ADS1015(
                 ads = ADS_1115.ADS1115(
                     i2c,
                     gain=gains[0],
                     address=self._addr,
                 )
+                # adc2 = AnalogIn(ads, ADS_1015.P2)
                 adc2 = AnalogIn(ads, ADS_1115.P2)
                 temp = (adc2.value * SLOPE) + INTERCEPT
                 if self._debug:
