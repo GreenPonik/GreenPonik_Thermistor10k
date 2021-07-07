@@ -85,7 +85,7 @@ class Thermistor10k:
                 SLOPE = self.slope_calculator([x1, x2], [y1, y2])
                 INTERCEPT = self.intercept_calculator(SLOPE, x1, y1)
 
-                if self.debug:
+                if self._debug:
                     print("slope: ", SLOPE)
                     print("intercept: ", INTERCEPT)
                 """ The ADS1015 and ADS1115 both have the same gain options.
