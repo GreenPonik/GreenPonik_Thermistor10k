@@ -119,4 +119,4 @@ class Thermistor10k:
                 else:
                     return temp
         except Exception as e:
-            print("cannot read water temperature, An exception occurred: {}".format(e))
+            print("An exception occurred: {}".format(e))
