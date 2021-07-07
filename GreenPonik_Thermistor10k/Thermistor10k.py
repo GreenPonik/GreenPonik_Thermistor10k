@@ -115,7 +115,7 @@ class Thermistor10k:
                     print("Thermistor 10k temperature: %.3f" % (temp))
 
                 if adc2.value >= 17500 or adc2.voltage >= 3.25:
-                    return 9999.999  # return error code can allow master to say thermistor doesn't connected
+                    return 9999.999  # return error code can allow user to know if thermistor doesn't connected
                 else:
                     return temp
         except Exception as e:
