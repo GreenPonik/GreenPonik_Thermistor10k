@@ -58,7 +58,6 @@ class Thermistor10k:
         slope m = DY/DX
         """
         slope = (y_list[1] - y_list[0]) / (x_list[1] - x_list[0])
-        print("slope: %.3f" % slope)
         return slope
 
     def intercept_calculator(self, slope, x, y):
@@ -66,7 +65,6 @@ class Thermistor10k:
         b = y -mx
         """
         intercept = y - slope * x
-        print("intercept: %.3f" % intercept)
         return intercept
 
     def read_temp(self):
@@ -85,7 +83,7 @@ class Thermistor10k:
                 SLOPE = self.slope_calculator([x1, x2], [y1, y2])
                 INTERCEPT = self.intercept_calculator(SLOPE, x1, y1)
 
-                if self._debug:
+                if self._debug is True:
                     print("slope: ", SLOPE)
                     print("intercept: ", INTERCEPT)
                 """ The ADS1015 and ADS1115 both have the same gain options.
@@ -109,7 +107,7 @@ class Thermistor10k:
                 # adc2 = AnalogIn(ads, ADS_1015.P2)
                 adc2 = AnalogIn(ads, ADS_1115.P2)
                 temp = (adc2.value * SLOPE) + INTERCEPT
-                if self._debug:
+                if self._debug is True:
                     print("adc2 analog: ", adc2.value)
                     print("adc2 voltage: ", adc2.voltage)
                     print("Thermistor 10k temperature: %.3f" % (temp))
