@@ -76,7 +76,7 @@ class Thermistor10k:
     #     return intercept
     # DEPRECATED ####
 
-    def steinhart_temperature_C(r, Ro=10000.0, To=25.0, beta=3950.0):
+    def steinhart_temperature_C(self, r, Ro=10000.0, To=25.0, beta=3950.0):
         """
         @brief steinhart formula for thermistor resistance conversion to celcius degrees
         """
