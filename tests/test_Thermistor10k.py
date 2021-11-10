@@ -5,41 +5,6 @@
 import unittest
 import sys
 from unittest.mock import patch
-# from functools import wraps
-
-# PRINT_ON = True
-
-
-# def toggle_print(p):
-#     global PRINT_ON
-#     PRINT_ON = p
-
-
-# def printf(f):
-#     @wraps(f)
-#     def wrapped(*args, **kwargs):
-#         r = f(*args, **kwargs)
-
-#         if len(args):
-#             c = str(args[0].__class__).split("'")[1]  # grab self from the class method
-#         else:
-#             c = ""  # no class
-
-#         if PRINT_ON:
-#             if r:
-#                 print("{}.{}{}: {}".format(c, f.__name__, args[1:], r))
-#             else:
-#                 print("{}.{}{}".format(c, f.__name__, args[1:]))
-#         return r
-
-#     return wrapped
-
-
-# class Base(object):
-#     def __init__(self, name=None):
-#         print("<<< WARNING: using fake waterbrain >>>")
-#         if name:
-#             print("<<< Using: {} >>>".format(name))
 
 
 class SmbusMock():
@@ -61,14 +26,7 @@ class AdafruitExtendedBusMock:
 
     class ExtendedI2C():
         # simultate the ExtendedI2C class just for tests
-        # @printf
-        # def __init__(self, bus_id=1, frequency=0):
-        # Base.__init__(self, self.__class__)
-        # pass
-
         pass
-
-    pass
 
 
 sys.modules["fcntl"] = FcntlMock()
