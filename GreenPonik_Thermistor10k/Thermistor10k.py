@@ -101,9 +101,9 @@ class Thermistor10k:
         @brief Read thermistor 10k temperature on raspberry pi i2c bus
         Get temperatue in celcius
         """
+        # init temp value to default error code (convension GreenPonik)
+        temp = 9999.999
         try:
-            # init temp value to default error code (convension GreenPonik)
-            temp = 9999.999
             with I2C(self._bus) as i2c:
                 """
                 # DEPRECATED ####
@@ -162,8 +162,8 @@ class Thermistor10k:
                 #     return temp
                 # DEPRECATED ####
                 """
-                # return temp
+                return temp
         except Exception as e:
             print("An exception occurred in read_temp(): {}".format(e))
-        finally:
-            return temp
+
+        return temp
