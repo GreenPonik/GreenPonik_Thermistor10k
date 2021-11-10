@@ -32,7 +32,7 @@ release = '0.0.16'
 # ones.
 extensions = [
     # 'sphinx_rtd_theme',
-    'sphinx_press_theme',
+    # 'sphinx_press_theme',
     'm2r2',
 ]
 

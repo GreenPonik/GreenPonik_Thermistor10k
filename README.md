@@ -45,9 +45,13 @@ install dependencies
 ```shell
 pip install -r requirements.txt
 ```
-build the documentation
+install dependencies for the documentation
 ```shell
-TODO
+pip install Sphinx sphinx-press-theme m2r2
+```
+build documentation
+```shell
+cd docs/ && make html
 ```
 
 ## Installation
