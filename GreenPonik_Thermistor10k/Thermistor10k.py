@@ -60,35 +60,41 @@ class Thermistor10k:
     def debug(self, d):
         self._debug = d
 
+    """
     # DEPRECATED ####
     # def slope_calculator(self, x_list, y_list):
-    #     """
+    #
     #     slope m = DY/DX
-    #     """
+    #
     #     slope = (y_list[1] - y_list[0]) / (x_list[1] - x_list[0])
     #     return slope
 
     # def intercept_calculator(self, slope, x, y):
-    #     """
+    #
     #     b = y -mx
-    #     """
+    #
     #     intercept = y - slope * x
     #     return intercept
     # DEPRECATED ####
+    """
 
-    def steinhart_temperature_C(self, r, Ro=10000.0, To=25.0, beta=3950.0):
+    def steinhart_temperature(self, r, ro=10000.0, to=25.0, beta=3950.0):
         """
         @brief steinhart formula for thermistor resistance conversion to celcius degrees
+        parameters:
+        r is thermistor calculated resistance
+        ro is thermistor resistance @25°c
+        beta is thermistor coefficient from data sheet
         """
         try:
             import math
 
-            steinhart = math.log(r / Ro) / beta  # log(R/Ro) / beta
-            steinhart += 1.0 / (To + 273.15)  # log(R/Ro) / beta + 1/To
+            steinhart = math.log(r / ro) / beta  # log(R/Ro) / beta
+            steinhart += 1.0 / (to + 273.15)  # log(R/Ro) / beta + 1/To
             steinhart = (1.0 / steinhart) - 273.15  # Invert, convert to C
             return steinhart
         except Exception as e:
-            print("An exception occurred in steinhart_temperature_C(): {}".format(e))
+            print("An exception occurred in steinhart_temperature(): {}".format(e))
 
     def read_temp(self):
         """
@@ -99,8 +105,9 @@ class Thermistor10k:
             # init temp value to default error code (convension GreenPonik)
             temp = 9999.999
             with I2C(self._bus) as i2c:
+                """
                 # DEPRECATED ####
-                # """these points are determinated by lab test with both ec probe and manual thermometer"""
+                # these points are determinated by lab test with both ec probe and manual thermometer
                 # # x1 = 12272
                 # # y1 = 25.9
                 # # x2 = 10752
@@ -113,6 +120,8 @@ class Thermistor10k:
                 # #     print("slope: ", SLOPE)
                 # #     print("intercept: ", INTERCEPT)
                 # DEPRECATED ####
+                """
+
                 """The ADS1015 and ADS1115 both have the same gain options.
                 GAIN    RANGE (V)
                 ----    ---------
@@ -136,7 +145,7 @@ class Thermistor10k:
                 value = adc2.value
                 resistance = (10000 * value / (32767 - value)) - self.THERMISTOR_OFFSET
 
-                temp = self.steinhart_temperature_C(resistance)
+                temp = self.steinhart_temperature(resistance)
 
                 # temp = (adc2.value * SLOPE) + INTERCEPT
                 if self._debug is True:
@@ -145,12 +154,14 @@ class Thermistor10k:
                     print("thermistor resistance: ", resistance)
                     print("Thermistor 10k temperature: %s" % (temp))
 
+                """
                 # DEPRECATED ####
                 # if adc2.value >= 17500 or adc2.voltage >= 3.25:
                 #     return 9999.999  # return error code can allow user to know if thermistor doesn't connected
                 # else:
                 #     return temp
                 # DEPRECATED ####
+                """
                 # return temp
         except Exception as e:
             print("An exception occurred in read_temp(): {}".format(e))
