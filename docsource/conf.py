@@ -10,9 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath('../GreenPonik_Thermistor10k'))
+# import os
+# import sys
+# sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -31,9 +31,7 @@ release = '0.0.16'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    # 'sphinx_rtd_theme',
-    # 'sphinx_press_theme',
-    'm2r2',
+    'm2r2'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -51,7 +49,6 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 # html_theme = 'alabaster'
-# html_theme = 'sphinx_rtd_theme'
 html_theme = 'press'
 
 # Add any paths that contain custom static files (such as style sheets) here,
