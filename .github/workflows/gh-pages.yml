@@ -38,9 +38,8 @@ jobs:
 
       - name: "Build Sphinx Doc"
         run: |
-          ls -la
           cd docs/
-          make html
+          make clean html
 
       # 3. Déploiement sur les Github Pages
 
