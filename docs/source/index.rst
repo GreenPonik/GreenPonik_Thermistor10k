@@ -11,7 +11,7 @@ Welcome to GreenPonik Thermistor 10k's documentation!
    :caption: Contents:
 
    modules
-
+   Index <readme_link.rst>
 
 Indices and tables
 ==================

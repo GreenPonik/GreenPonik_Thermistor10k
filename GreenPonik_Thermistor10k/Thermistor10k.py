@@ -29,10 +29,29 @@ class Thermistor10k:
     DEFAULT_BUS = 1
     THERMISTOR_OFFSET = 2000
 
+    """The ADS1015 and ADS1115 both have the same gain options.
+    GAIN    RANGE (V)
+    ----    ---------
+        2/3    +/- 6.144
+        1    +/- 4.096
+        2    +/- 2.048
+        4    +/- 1.024
+        8    +/- 0.512
+        16    +/- 0.256
+    """
+
     def __init__(self, bus=DEFAULT_BUS, addr=DEFAULT_ADDR):
         self._bus = bus
         self._addr = addr
         self._debug = False
+        self._gains = [g for g in _ADS1X15_CONFIG_GAIN.keys()]
+        self._gain = self._gains[1]  # defautl gain to 1: 512 => 4.096V
+        self._i2c = I2C(self._bus)
+        self._ads = ADS_1115.ADS1115(
+            i2c=self._i2c, gain=self._gain, address=self._addr
+        )  # Create the ADS object # ads = ADS_1015.ADS1015()
+        self._ads_chan_selector = ADS_1115.P2
+        self._ads_chan = AnalogIn(self._ads, self._ads_chan_selector)  # AnalogIn(ads, ADS_1015.P2)
 
     def __enter__(self):
         """Context manager enter function."""
@@ -45,12 +64,54 @@ class Thermistor10k:
         return False  # Don't suppress exceptions.
 
     @property
+    def i2c(self):
+        return self._i2c
+
+    @property
+    def ads_instance(self):
+        return self._ads
+
+    @property
+    def ads_channel_selector(self):
+        return self._ads_chan_selector
+
+    @ads_channel_selector.setter
+    def ads_channel_selector(self, c):
+        assert(c in [ADS_1115.P0, ADS_1115.P1, ADS_1115.P2, ADS_1115.P3])
+        self._ads_chan_selector = c
+
+    @property
+    def ads_channel_read(self):
+        return self._ads_chan
+
+    @property
     def bus(self):
         return self._bus
+
+    @bus.setter
+    def bus(self, b):
+        self._bus = b
 
     @property
     def address(self):
         return self._addr
+
+    @address.setter
+    def address(self, a):
+        self._addr = a
+
+    @property
+    def gains(self):
+        return self._gains
+
+    @property
+    def gain(self):
+        return self._gain
+
+    @gain.setter
+    def gain(self, g):
+        assert(g in self._gains)
+        self._gain = g
 
     @property
     def debug(self):
@@ -59,24 +120,6 @@ class Thermistor10k:
     @debug.setter
     def debug(self, d):
         self._debug = d
-
-    """
-    # DEPRECATED ####
-    # def slope_calculator(self, x_list, y_list):
-    #
-    #     slope m = DY/DX
-    #
-    #     slope = (y_list[1] - y_list[0]) / (x_list[1] - x_list[0])
-    #     return slope
-
-    # def intercept_calculator(self, slope, x, y):
-    #
-    #     b = y -mx
-    #
-    #     intercept = y - slope * x
-    #     return intercept
-    # DEPRECATED ####
-    """
 
     def steinhart_temperature(self, r, ro=10000.0, to=25.0, beta=3950.0):
         """
@@ -104,67 +147,21 @@ class Thermistor10k:
         # init temp value to default error code (convension GreenPonik)
         temp = 9999.999
         try:
-            with I2C(self._bus) as i2c:
-                """
-                # DEPRECATED ####
-                # these points are determinated by lab test with both ec probe and manual thermometer
-                # # x1 = 12272
-                # # y1 = 25.9
-                # # x2 = 10752
-                # # y2 = 34.5
+            adc_channel = self._ads_chan
+            value = adc_channel.value
+            resistance = (10000 * value / (32767 - value)) - self.THERMISTOR_OFFSET
 
-                # # SLOPE = self.slope_calculator([x1, x2], [y1, y2])
-                # # INTERCEPT = self.intercept_calculator(SLOPE, x1, y1)
+            temp = self.steinhart_temperature(resistance)
 
-                # # if self._debug is True:
-                # #     print("slope: ", SLOPE)
-                # #     print("intercept: ", INTERCEPT)
-                # DEPRECATED ####
-                """
+            if self._debug is True:
+                print("adc2 analog: ", adc_channel.value)
+                print("adc2 voltage: ", adc_channel.voltage)
+                print("thermistor resistance: ", resistance)
+                print("Thermistor 10k temperature: %s" % (temp))
 
-                """The ADS1015 and ADS1115 both have the same gain options.
-                GAIN    RANGE (V)
-                ----    ---------
-                 2/3    +/- 6.144
-                   1    +/- 4.096
-                   2    +/- 2.048
-                   4    +/- 1.024
-                   8    +/- 0.512
-                  16    +/- 0.256
-                """
-                gains = [g for g in _ADS1X15_CONFIG_GAIN.keys()]
-                # Create the ADS object
-                # ads = ADS_1015.ADS1015(
-                ads = ADS_1115.ADS1115(
-                    i2c,
-                    gain=gains[0],
-                    address=self._addr,
-                )
-                # adc2 = AnalogIn(ads, ADS_1015.P2)
-                adc2 = AnalogIn(ads, ADS_1115.P2)
-                value = adc2.value
-                resistance = (10000 * value / (32767 - value)) - self.THERMISTOR_OFFSET
-
-                temp = self.steinhart_temperature(resistance)
-
-                # temp = (adc2.value * SLOPE) + INTERCEPT
-                if self._debug is True:
-                    print("adc2 analog: ", adc2.value)
-                    print("adc2 voltage: ", adc2.voltage)
-                    print("thermistor resistance: ", resistance)
-                    print("Thermistor 10k temperature: %s" % (temp))
-
-                """
-                # DEPRECATED ####
-                # if adc2.value >= 17500 or adc2.voltage >= 3.25:
-                #     return 9999.999  # return error code can allow user to know if thermistor doesn't connected
-                # else:
-                #     return temp
-                # DEPRECATED ####
-                """
-                if temp >= 100 or temp <= 0:
-                    return 9999.999
-                else:
-                    return temp
+            if temp >= 100 or temp <= 0:
+                return 9999.999
+            else:
+                return temp
         except Exception as e:
             print("An exception occurred in read_temp(): {}".format(e))
