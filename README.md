@@ -51,7 +51,7 @@ pip install Sphinx sphinx-press-theme m2r2
 ```
 build documentation
 ```shell
-cd docs/ && make html
+cd docs/ && make clean html
 ```
 
 ## Installation
