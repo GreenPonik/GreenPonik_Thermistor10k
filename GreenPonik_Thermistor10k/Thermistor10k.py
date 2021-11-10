@@ -165,6 +165,5 @@ class Thermistor10k:
                 # return temp
         except Exception as e:
             print("An exception occurred in read_temp(): {}".format(e))
-            pass
         finally:
             return temp
