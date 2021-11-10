@@ -96,7 +96,7 @@
           <div class="content" role="main" v-pre>
             
   <section id="welcome-to-greenponik-thermistor-10k-s-documentation">
-<h1>Welcome to GreenPonik Thermistor 10k’s documentation!<a class="headerlink" href="#welcome-to-greenponik-thermistor-10k-s-documentation" title="Permalink to this headline"></a></h1>
+<h1>Welcome to GreenPonik Thermistor 10k’s documentation!<a class="headerlink" href="#welcome-to-greenponik-thermistor-10k-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <a class="reference external image-reference" href="https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k"><img alt="Quality Gate Status" src="https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&amp;metric=alert_status" /></a>
@@ -109,12 +109,12 @@
 <a class="reference external image-reference" href="https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Upload%20Python%20Package/badge.svg?event=release"><img alt="Upload Python Package" src="https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Upload%20Python%20Package/badge.svg?event=release" /></a>
 <a class="reference external image-reference" href="https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Python%20package/badge.svg?event=push"><img alt="Python package" src="https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Python%20package/badge.svg?event=push" /></a>
 <section id="greenponik-thermistor10k-py-library-for-raspberry-pi">
-<h2>GreenPonik_Thermistor10k.py Library for Raspberry pi<a class="headerlink" href="#greenponik-thermistor10k-py-library-for-raspberry-pi" title="Permalink to this headline"></a></h2>
+<h2>GreenPonik_Thermistor10k.py Library for Raspberry pi<a class="headerlink" href="#greenponik-thermistor10k-py-library-for-raspberry-pi" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>This is the sample code for read temperature with thermistor 10k sensor on i2c bus.</p>
 </section>
 <section id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="#greenponikthermistor10kpy-library-for-raspberry-pi">GreenPonik_Thermistor10k.py Library for Raspberry pi</a></p></li>
 <li><p><a class="reference external" href="#table-of-contents">Table of Contents</a></p></li>
@@ -126,7 +126,7 @@
 </ul>
 </section>
 <section id="id3">
-<h2>Dev workflow<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<h2>Dev workflow<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>create python virtual environnement</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3 -m venv venv
 </pre></div>
@@ -143,13 +143,17 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
 </pre></div>
 </div>
-<p>build the documentation</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>TODO
+<p>install dependencies for the documentation</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install Sphinx sphinx-press-theme m2r2
+</pre></div>
+</div>
+<p>build documentation</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> docs/ <span class="o">&amp;&amp;</span> make html
 </pre></div>
 </div>
 </section>
 <section id="id4">
-<h2>Installation<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<h2>Installation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt; git clone https://github.com/GreenPonik/GreenPonik_Thermistor10k.git
 <span class="nb">cd</span> GreenPonik_Thermistor10k
 pip3 install -r requirements.txt
@@ -164,7 +168,7 @@ or
 </div>
 </section>
 <section id="id5">
-<h2>Methods<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<h2>Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Get temperatue in celcius</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -173,7 +177,7 @@ or
 </div>
 </section>
 <section id="id6">
-<h2>Example<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<h2>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">GreenPonik_Thermistor10k.Thermistor10k</span> <span class="kn">import</span> <span class="n">Thermistor10k</span>
 
@@ -188,7 +192,7 @@ or
 </div>
 </section>
 <section id="id7">
-<h2>Credits<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<h2>Credits<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Write by Mickael Lehoux, from <a class="reference external" href="https://www.greenponik.com">GreenPonik</a>, 2020</p>
 </section>
 </section>
@@ -200,7 +204,7 @@ or
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2021, GreenPonik.
     <br>
-    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
 </div>
             </div>
           </div>
