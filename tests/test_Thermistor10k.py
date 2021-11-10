@@ -21,7 +21,7 @@ class FcntlMock():
 
 class AdafruitExtendedBusMock:
     # simultate the adafruit_extended_bus class just for tests
-    def init():
+    def init(self):
         pass
 
     class ExtendedI2C():
