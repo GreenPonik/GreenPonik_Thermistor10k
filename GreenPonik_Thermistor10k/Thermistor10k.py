@@ -60,6 +60,7 @@ class Thermistor10k:
     def debug(self, d):
         self._debug = d
 
+    # DEPRECATED ####
     # def slope_calculator(self, x_list, y_list):
     #     """
     #     slope m = DY/DX
@@ -73,6 +74,7 @@ class Thermistor10k:
     #     """
     #     intercept = y - slope * x
     #     return intercept
+    # DEPRECATED ####
 
     def steinhart_temperature_C(r, Ro=10000.0, To=25.0, beta=3950.0):
         """
@@ -149,7 +151,7 @@ class Thermistor10k:
                 # else:
                 #     return temp
                 # DEPRECATED ####
-                return temp
+                # return temp
         except Exception as e:
             print("An exception occurred in read_temp(): {}".format(e))
             pass
