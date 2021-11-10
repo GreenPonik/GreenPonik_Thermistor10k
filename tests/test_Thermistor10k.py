@@ -30,7 +30,18 @@ class TestThermistor10k(unittest.TestCase):
         th.read_temp.return_value = expected
         ec_value = th.read_temp()
         self.assertIsNotNone(self, ec_value)
-        self.assertTrue(self, type(ec_value).__name__ == "float")
+        self.assertTrue(self, isinstance(ec_value, float))
+        self.assertTrue(self, ec_value == expected)
+
+    @patch("GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k")
+    def test_read_temp_return_error(self, mock_th):
+        th = mock_th()
+        expected = 9999.999
+        th.read_temp.return_value = expected
+        ec_value = th.read_temp()
+        self.assertIsNotNone(self, ec_value)
+        self.assertTrue(self, isinstance(ec_value, float))
+        self.assertTrue(self, ec_value == expected)
 
 
 if __name__ == "__main__":

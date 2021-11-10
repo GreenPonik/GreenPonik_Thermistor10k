@@ -162,8 +162,9 @@ class Thermistor10k:
                 #     return temp
                 # DEPRECATED ####
                 """
-                return temp
+                if temp >= 100 or temp <= 0:
+                    return 9999.999
+                else:
+                    return temp
         except Exception as e:
             print("An exception occurred in read_temp(): {}".format(e))
-
-        return temp
