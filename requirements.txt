@@ -15,4 +15,5 @@ check-manifest>=0.42
 Sphinx==4.2.0
 sphinx-rtd-theme>=1.0.0
 sphinx_press_theme==0.8.0
-recommonmark>=0.7.1
+# recommonmark>=0.7.1
+m2r2==0.3.1

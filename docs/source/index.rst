@@ -8,15 +8,6 @@ Welcome to GreenPonik Thermistor 10k's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-   modules
-   Index <readme_link.rst>
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. mdinclude:: ../../README.md
 
