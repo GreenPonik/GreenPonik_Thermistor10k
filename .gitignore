@@ -15,3 +15,6 @@ venv/
 # due to using tox and pytest
 .tox
 .cache
+docs
+_docs
+doxygen_docs

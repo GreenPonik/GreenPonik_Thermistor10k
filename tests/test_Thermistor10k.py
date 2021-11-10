@@ -27,8 +27,8 @@ class TestThermistor10k(unittest.TestCase):
     def test_read_temp(self, mock_th):
         th = mock_th()
         expected = 17.65
-        th.readTemp.return_value = expected
-        ec_value = th.readTemp()
+        th.read_temp.return_value = expected
+        ec_value = th.read_temp()
         self.assertIsNotNone(self, ec_value)
         self.assertTrue(self, type(ec_value).__name__ == "float")
 

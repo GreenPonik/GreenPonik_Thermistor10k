@@ -7,8 +7,10 @@
 adafruit-blinka>=5.2.3
 adafruit-circuitpython-ads1x15==2.1.2
 adafruit-extended-bus==1.0.0
-tox==3.18.0
+tox>=3.18.0
 twine==3.2.0
-pytest==5.4.3
-flake8==3.8.3
-check-manifest==0.42
+pytest>=5.4.3
+flake8>=3.8.3
+check-manifest>=0.42
+Sphinx==4.2.0
+sphinx-rtd-theme>=1.0.0

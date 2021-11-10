@@ -22,11 +22,33 @@ This is the sample code for read temperature with thermistor 10k sensor on i2c b
 
 - [GreenPonik_Thermistor10k.py Library for Raspberry pi](#greenponikthermistor10kpy-library-for-raspberry-pi)
 - [Table of Contents](#table-of-contents)
+- [Dev workflow](#dev-workflow)
 - [Installation](#installation)
 - [Methods](#methods)
 - [Example](#example)
 - [Credits](#credits)
 
+## Dev workflow
+create python virtual environnement
+```shell
+python3 -m venv venv
+```
+activate venv linux
+```shell
+source venv/bin/activate
+```
+activate venv windows
+```
+venv\Scripts\activate
+```
+install dependencies
+```shell
+pip install -r requirements.txt
+```
+build the documentation
+```shell
+
+```
 
 ## Installation
 ```shell
