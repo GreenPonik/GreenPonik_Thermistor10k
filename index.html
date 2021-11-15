@@ -21,7 +21,8 @@
       <script src="_static/theme.js" defer></script>
     
   <link rel="index" title="Index" href="genindex.html" />
-  <link rel="search" title="Search" href="search.html" /> 
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="GreenPonik_Thermistor10k" href="modules.html" /> 
   </head>
 
   <body>
@@ -36,6 +37,22 @@
   <div class="links">
     <navlinks class="can-hide">
 
+  
+    <div class="nav-item">
+      <a href="#welcome-to-greenponik-thermistor-10k-s-documentation"
+         class="nav-link ">
+         welcome to greenponik thermistor 10k's documentation!
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="modules.html#greenponik-thermistor10k"
+         class="nav-link ">
+         greenponik_thermistor10k
+      </a>
+    </div>
+  
+
 
 
     </navlinks>
@@ -49,6 +66,22 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="#welcome-to-greenponik-thermistor-10k-s-documentation"
+         class="nav-link ">
+         welcome to greenponik thermistor 10k's documentation!
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="modules.html#greenponik-thermistor10k"
+         class="nav-link ">
+         greenponik_thermistor10k
+      </a>
+    </div>
+  
 
 
 
@@ -75,6 +108,24 @@
       </ul>
     </div>
   
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="modules.html#greenponik-thermistor10k">greenponik_thermistor10k</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="GreenPonik_Thermistor10k.html" class="reference internal ">GreenPonik_Thermistor10k package</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
 </div>
         </sidebar>
 
@@ -89,6 +140,10 @@
   
 
   <ul class="page-nav">
+  <li class="next">
+    <a href="modules.html"
+       title="next chapter">GreenPonik_Thermistor10k →</a>
+  </li>
 </ul>
   
 </div>
@@ -111,7 +166,7 @@
 <section id="greenponik-thermistor10k-py-library-for-raspberry-pi">
 <h2>GreenPonik_Thermistor10k.py Library for Raspberry pi<a class="headerlink" href="#greenponik-thermistor10k-py-library-for-raspberry-pi" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>This is the sample code for read temperature with thermistor 10k sensor on i2c bus.</p>
+<p>This is the code for read temperature with thermistor 10k sensor on i2c bus.</p>
 </section>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
@@ -152,8 +207,10 @@
 </pre></div>
 </div>
 </section>
+<section id="usage-workflow">
+<h2>Usage Workflow<a class="headerlink" href="#usage-workflow" title="Permalink to this headline">¶</a></h2>
 <section id="id4">
-<h2>Installation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h3>Installation<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt; git clone https://github.com/GreenPonik/GreenPonik_Thermistor10k.git
 <span class="nb">cd</span> GreenPonik_Thermistor10k
 pip3 install -r requirements.txt
@@ -168,7 +225,7 @@ or
 </div>
 </section>
 <section id="id5">
-<h2>Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h3>Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Get temperatue in celcius</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -177,30 +234,55 @@ or
 </div>
 </section>
 <section id="id6">
-<h2>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h3>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">GreenPonik_Thermistor10k.Thermistor10k</span> <span class="kn">import</span> <span class="n">Thermistor10k</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">th</span> <span class="o">=</span> <span class="n">Thermistor10k</span><span class="p">()</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">temperature</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">read_temp</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;celcius temp </span><span class="si">%.3f</span><span class="s2"> °c&quot;</span> <span class="o">%</span> <span class="n">temperature</span><span class="p">)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">th</span> <span class="o">=</span> <span class="n">Thermistor10k</span><span class="p">()</span>
+        <span class="n">th</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># used for debug</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">temperature</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">read_temp</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;celcius temp </span><span class="si">%.3f</span><span class="s2"> °c&quot;</span> <span class="o">%</span> <span class="n">temperature</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;oops there is an exception </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </pre></div>
 </div>
+</section>
 </section>
 <section id="id7">
 <h2>Credits<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Write by Mickael Lehoux, from <a class="reference external" href="https://www.greenponik.com">GreenPonik</a>, 2020</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">GreenPonik_Thermistor10k</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GreenPonik_Thermistor10k.html">GreenPonik_Thermistor10k package</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
 </section>
 
 
           </div>
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
+  <li class="next">
+    <a href="modules.html"
+       title="next chapter">GreenPonik_Thermistor10k →</a>
+  </li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2021, GreenPonik.
     <br>
