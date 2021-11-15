@@ -1,5 +1,5 @@
-GreenPonik_Thermistor10k
-========================
+GreenPonik_Thermistor10k Documentation
+======================================
 
 .. toctree::
    :maxdepth: 4
