@@ -8,15 +8,14 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=security_rating)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=GreenPonik_GreenPonik_Thermistor10k&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=GreenPonik_GreenPonik_Thermistor10k)
 
-
 ![Upload Python Package](https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Upload%20Python%20Package/badge.svg?event=release)
 ![Python package](https://github.com/GreenPonik/GreenPonik_Thermistor10k/workflows/Python%20package/badge.svg?event=push)
 
-
 ## GreenPonik_Thermistor10k.py Library for Raspberry pi
----------------------------------------------------------
-This is the sample code for read temperature with thermistor 10k sensor on i2c bus.
 
+---
+
+This is the code for read temperature with thermistor 10k sensor on i2c bus.
 
 ## Table of Contents
 
@@ -29,48 +28,64 @@ This is the sample code for read temperature with thermistor 10k sensor on i2c b
 - [Credits](#credits)
 
 ## Dev workflow
+
 create python virtual environnement
+
 ```shell
 python3 -m venv venv
 ```
+
 activate venv linux
+
 ```shell
 source venv/bin/activate
 ```
+
 activate venv windows
+
 ```
 venv\Scripts\activate
 ```
+
 install dependencies
+
 ```shell
 pip install -r requirements.txt
 ```
+
 install dependencies for the documentation
+
 ```shell
 pip install Sphinx sphinx-press-theme m2r2
 ```
+
 build documentation
+
 ```shell
 cd docs/ && make clean html
 ```
 
-## Installation
+## Usage Workflow
+
+### Installation
+
 ```shell
 > git clone https://github.com/GreenPonik/GreenPonik_Thermistor10k.git
 cd GreenPonik_Thermistor10k
 pip3 install -r requirements.txt
 
-or 
+or
 
 > pip install greenponik-thermistor10k
 ```
+
 ```Python
 
 from GreenPonik_Thermistor10k.Thermistor10k import Thermistor10k
 
 ```
 
-## Methods
+### Methods
 
 ```python
 """
@@ -80,8 +95,7 @@ def read_temp():
 
 ```
 
-## Example
-
+### Example
 
 ```Python
 import time
@@ -89,13 +103,18 @@ from GreenPonik_Thermistor10k.Thermistor10k import Thermistor10k
 
 
 if __name__ == "__main__":
-    th = Thermistor10k()
-    while True:
-        temperature = th.read_temp()
-        print("celcius temp %.3f °c" % temperature)
-        time.sleep(1)
+    try:
+        th = Thermistor10k()
+        th.debug = True # used for debug
+        while True:
+            temperature = th.read_temp()
+            print("celcius temp %.3f °c" % temperature)
+            time.sleep(1)
+    except Exception as e:
+        print("oops there is an exception {}".format(e))
 
 ```
 
 ## Credits
+
 Write by Mickael Lehoux, from [GreenPonik](https://www.greenponik.com), 2020

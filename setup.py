@@ -10,7 +10,6 @@ URL = "https://github.com/GreenPonik/GreenPonik_Thermistor10k"
 EMAIL = "contact@greenponik.com"
 AUTHOR = "GreenPonik SAS"
 REQUIRES_PYTHON = ">=3.6.0"
-VERSION = "0.0.16"
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -32,11 +31,8 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 # Load the package's version.py module as a dictionary.
 about = {}
-if not VERSION:
-    with open(os.path.join(here, "version.py")) as f:
-        exec(f.read(), about)
-else:
-    about["__version__"] = VERSION
+with open(os.path.join(here, "version.py")) as f:
+    exec(f.read(), about)
 
 setup(
     name=NAME,
