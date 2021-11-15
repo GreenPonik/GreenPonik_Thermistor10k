@@ -86,7 +86,7 @@ class Thermistor10k:
         return self._ads_chan_selector
 
     @ads_channel_selector.setter
-    def ads_channel_selector(self, c):
+    def ads_channel_selector(self, c: int) -> None:
         """getter channel of the ADS
 
         Args:
@@ -114,7 +114,7 @@ class Thermistor10k:
         return self._bus
 
     @bus.setter
-    def bus(self, b):
+    def bus(self, b: int) -> None:
         """[summary]
 
         Args:
@@ -132,7 +132,7 @@ class Thermistor10k:
         return self._addr
 
     @address.setter
-    def address(self, a):
+    def address(self, a: int) -> None:
         """setter i2c address of the device
 
         Args:
@@ -159,7 +159,7 @@ class Thermistor10k:
         return self._gain
 
     @gain.setter
-    def gain(self, g):
+    def gain(self, g: int) -> None:
         """setter gain
 
         :param g: the new gain to be setted from self.gains list
@@ -189,7 +189,7 @@ class Thermistor10k:
         """
         self._debug = d
 
-    def _steinhart_temperature(self, r, ro=10000.0, to=25.0, beta=3950.0):
+    def _steinhart_temperature(self, r, ro=10000.0, to=25.0, beta=3950.0) -> float:
         """steinhart formula for thermistor resistance conversion to celcius degrees
 
         :param r: thermistor calculated resistance
@@ -209,7 +209,7 @@ class Thermistor10k:
         except Exception as e:
             print("An exception occurred in steinhart_temperature(): {}".format(e))
 
-    def read_temp(self):
+    def read_temp(self) -> float:
         """Read thermistor 10k temperature on raspberry pi i2c bus\
             Get temperatue in celcius
 

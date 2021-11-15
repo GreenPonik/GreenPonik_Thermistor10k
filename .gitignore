@@ -16,5 +16,3 @@ venv/
 .tox
 .cache
 docs
-_docs
-doxygen_docs
