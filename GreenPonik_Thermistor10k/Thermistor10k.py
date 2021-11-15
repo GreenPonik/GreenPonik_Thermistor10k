@@ -115,10 +115,10 @@ class Thermistor10k:
 
     @bus.setter
     def bus(self, b: int) -> None:
-        """[summary]
+        """setter i2c bus number currently used
 
         Args:
-            b ([type]): [description]
+            b (int): the i2c bus number
         """
         self._bus = b
 
