@@ -10,10 +10,3 @@ Welcome to GreenPonik Thermistor 10k's documentation!
    :maxdepth: 2
 
 .. mdinclude:: ../README.md
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
