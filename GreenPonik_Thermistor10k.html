@@ -122,7 +122,7 @@
             
               <ul>
                 
-                  <li class="toctree-l2"><a href="#greenponik-thermistor10k-package" class="reference internal">GreenPonik_Thermistor10k package</a></li>
+                  <li class="toctree-l2"><a href="#description" class="reference internal">Description</a></li>
                 
               </ul>
             
@@ -158,8 +158,175 @@
 <hr>
           <div class="content" role="main" v-pre>
             
-  <section id="greenponik-thermistor10k-package">
-<h1>GreenPonik_Thermistor10k package<a class="headerlink" href="#greenponik-thermistor10k-package" title="Permalink to this headline">¶</a></h1>
+  <section id="module-GreenPonik_Thermistor10k.Thermistor10k">
+<span id="greenponik-thermistor10k-package"></span><h1>GreenPonik_Thermistor10k package<a class="headerlink" href="#module-GreenPonik_Thermistor10k.Thermistor10k" title="Permalink to this headline">¶</a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>GreenPonik_thermistor_10k Read temperature on thermistor 10kwith Python3 through i2c</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">GreenPonik_Thermistor10k.Thermistor10k.</span></span><span class="sig-name descname"><span class="pre">Thermistor10k</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.DEFAULT_ADDR">
+<span class="sig-name descname"><span class="pre">DEFAULT_ADDR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">72</span></em><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.DEFAULT_ADDR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.DEFAULT_BUS">
+<span class="sig-name descname"><span class="pre">DEFAULT_BUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.DEFAULT_BUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.THERMISTOR_OFFSET">
+<span class="sig-name descname"><span class="pre">THERMISTOR_OFFSET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2000</span></em><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.THERMISTOR_OFFSET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k._steinhart_temperature">
+<span class="sig-name descname"><span class="pre">_steinhart_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ro</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3950.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k._steinhart_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>steinhart formula for thermistor resistance conversion to celcius degrees</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> – thermistor calculated resistance</p></li>
+<li><p><strong>ro</strong> – thermistor resistance &#64;25°c</p></li>
+<li><p><strong>beta</strong> – thermistor coefficient from data sheet</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>Exception: Global Exception</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Steinhart temperature</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.address">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">address</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter i2c address of the device</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: i2c address of the device on the i2c bus</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.ads_channel_read">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ads_channel_read</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.ads_channel_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter reads from ads channel selected</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: analog value from 0 to 32767</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.ads_channel_selector">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ads_channel_selector</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.ads_channel_selector" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter channel of the ADS</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Int: Number of the channel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.ads_instance">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ads_instance</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.ads_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter ads instance</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>ADS_1115: ads instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.bus">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bus</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.bus" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter i2c bus number currently used</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: the i2c bus number</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.debug">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">debug</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>debug property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Getter</dt>
+<dd class="field-odd"><p>debug flag</p>
+</dd>
+<dt class="field-even">Setter</dt>
+<dd class="field-even"><p>change debug flag</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: <cite>True</cite> if the debug mode is ON, <cite>False</cite> if not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.gain">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gain</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.gain" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>get the current used gain on ADS</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.gains">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gains</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.gains" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter gains</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: list of possible gain available on the ADS</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.i2c">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">i2c</span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.i2c" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter i2c bus instance</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>ExtendedI2C: i2c bus instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.read_temp">
+<span class="sig-name descname"><span class="pre">read_temp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#GreenPonik_Thermistor10k.Thermistor10k.Thermistor10k.read_temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read thermistor 10k temperature on raspberry pi i2c bus            Get temperatue in celcius</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>Exception: Global Exception</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Temperature from Thermistor 10k</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 </section>
 
 
